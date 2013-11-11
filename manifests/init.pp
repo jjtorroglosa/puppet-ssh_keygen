@@ -21,7 +21,7 @@ define ssh_keygen($ensure = present, $home=undef, $key_path=undef, $user='root',
   }
   if $ensure == present {
     exec { "ssh_keygen-${name}":
-      command => "ssh-keygen -f \"${key_path_real}\" -N '' -C ${comment}",
+      command => "ssh-keygen -f \"${key_path_real}\" -N '' -C \"${comment}\"",
       user    => $user,
       creates => "${key_path_real}",
     }
